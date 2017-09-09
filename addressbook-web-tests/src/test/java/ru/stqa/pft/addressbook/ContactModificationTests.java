@@ -15,7 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import static org.openqa.selenium.OutputType.*;
 
-public class ContactDeletionTests {
+public class ContactModificationTests {
     FirefoxDriver wd;
     
     @BeforeMethod
@@ -25,7 +25,7 @@ public class ContactDeletionTests {
     }
     
     @Test
-    public void testContactDeletion() {
+    public void ContactModificationTests() {
         wd.get("http://localhost/addressbook/");
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).clear();
@@ -34,11 +34,17 @@ public class ContactDeletionTests {
         wd.findElement(By.name("pass")).clear();
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-        if (!wd.findElement(By.id("MassCB")).isSelected()) {
-            wd.findElement(By.id("MassCB")).click();
-        }
-        wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
-        wd.switchTo().alert().accept();
+        wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img")).click();
+        wd.findElement(By.name("modifiy")).click();
+        wd.findElement(By.name("title")).click();
+        wd.findElement(By.name("title")).clear();
+        wd.findElement(By.name("title")).sendKeys("USA");
+        wd.findElement(By.name("notes")).click();
+        wd.findElement(By.name("notes")).clear();
+        wd.findElement(By.name("notes")).sendKeys("PLEASE CONFIRM");
+        wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+        wd.findElement(By.linkText("home page")).click();
+        wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[7]/a/img")).click();
     }
     
     @AfterMethod

@@ -1,14 +1,14 @@
 package ru.stqa.pft.addressbook;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.*;
 
 public class ContactCreationTests {
     FirefoxDriver wd;
@@ -35,7 +35,7 @@ public class ContactCreationTests {
     public void testContactCreation() {
 
         gotoContactPage();
-        fillContactForm(new ContactData("IVAN", "/9n", "PUPKIN", "GOOGLE", "USA CALIFORNIA", "123456789", "987654321", "google@google.com"));
+        fillContactForm(new ContactData("IVAN", "IVANOVICH", "PUPKIN", "GOOGLE", "USA CALIFORNIA", "123456789", "987654321", "google@google.com"));
         submitContactCreation();
         returnToContactPage();
     }
